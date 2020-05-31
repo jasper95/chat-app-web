@@ -12,7 +12,6 @@
   from = "/api/*" 
   to = "https://chat-exam-api.herokuapp.com/:splat"
   status = 200
-  headers = { Authorization = "Basic dGVzdDp0ZXN0"}
 
 [[redirects]]
   from = "/*"
