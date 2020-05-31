@@ -1,0 +1,106 @@
+$color-primary: #35B035;
+$color-secondary: #4680FE;
+$color-success: #30b407;
+$color-warning: #F98A1E;
+$color-danger: #FF4444;
+$color-info: #0060FF;
+$color-text: #333;
+$color-bg: #f0f0f0;
+$font-size: 16px;
+$font-family: 'Roboto Condensed', sans-serif;
+
+$red: #FF4444;
+$orange: #F98A1E;
+$yellow: #FFD544;
+$green: #30b407;
+$jade: #008B98;
+$teal: #1FC8B6;
+$blue: #0060FF;
+$indigo: #3A13B7;
+$purple: #902BEE;
+$violet: #E41DA5;
+
+$white: #FFF;
+$black: #1A1A1A;
+$gray: #afafaf;
+$lightgray: #E9E9E9;
+$darkgray: #262626;
+
+$responsive-desktop: only screen and (min-width: 1440px) and (max-width:2560px);
+$responsive-laptop: only screen and (min-width: 1024px) and (max-width:1439px);
+$responsive-tablet: only screen and (min-device-width:425px) and (max-device-width:1023px), (min-width: 425px) and (max-width: 1023px);
+$responsive-tablet-portrait: only screen and (min-device-width:768px) and (max-device-width:1023px), (min-width: 768px) and (max-width: 1023px);
+$responsive-tablet-landscape: only screen and (min-device-width:768px) and (max-device-width:1023px), (min-width: 768px) and (max-width: 1023px);
+$responsive-phone: only screen and (min-device-width:320px) and (max-device-width:425px), (min-width:320px) and (max-width:425px);
+$responsive-phone-portrait: only screen and (min-device-width:320px) and (max-device-width:736px), (min-width:320px) and (max-width:736px);
+$responsive-phone-landscape: only screen and (min-device-width:320px) and (max-device-width:736px), (min-width:320px) and (max-width:736px);
+
+@mixin flex($hAlign: flex-start, $vAlign: flex-start, $direction: row, $impt: "") {
+  display: flex #{$impt};
+  justify-content: $hAlign #{$impt};
+  align-items: $vAlign #{$impt};
+  flex-direction: $direction;
+}
+
+@mixin applyScrollbar(
+  $scrollbar-track-bg: #eeeeee,
+  $scrollbar-thumb-bg: #9e9e9e,
+  $scrollbar-track-bg-active: #e0e0e0,
+  $scrollbar-thumb-bg-active: $color-primary,
+  $scrollbar-curve: 8px,
+  $scrollbar-size: 8px
+  ) {
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+
+  &::-webkit-scrollbar {
+    width: $scrollbar-size;
+    height: $scrollbar-size;
+    background-color: inherit;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $scrollbar-track-bg;
+    border-radius: $scrollbar-curve;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $scrollbar-thumb-bg;
+    border-radius: 4em;
+  }
+  &:hover {
+    &::-webkit-scrollbar-track {
+      background-color: $scrollbar-track-bg-active;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar-thumb-bg-active;
+    }
+  }
+}
+
+
+
+@keyframes spinner {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+:root {
+  --primary: #{$color-primary};
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

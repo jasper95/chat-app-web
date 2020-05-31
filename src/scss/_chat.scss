@@ -1,0 +1,204 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background-color: $white;
+  padding: 0;
+  @include flex(flex-start, flex-start);
+  flex-direction: column;
+  position: relative;
+}
+
+.preloader {
+  width: 100%;
+  height: 100%;
+  @include flex(center, center);
+  color: $gray;
+
+  .text {
+    margin-left: 1rem;
+  }
+}
+
+.wrapper {
+  padding: 1rem;
+  width: calc(100% - 2rem);
+}
+
+.header {
+  position: fixed;
+  z-index: 2;
+  background-color: $white;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 4px solid $color-primary;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0px 5px 10px rgba($black, 0.25);
+  letter-spacing: -1.5px;
+
+  .logout {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    letter-spacing: 0px;
+  }
+}
+
+.mainContainer {
+  width: 100%;
+  @include flex(flex-start, center);
+  flex-direction: column;
+  position: fixed;
+  top: 59px;
+  bottom: 0;
+}
+
+.login {
+  width: 100%;
+  padding-top: 1rem;
+  .wrapper {
+    .form {
+      @include flex(center, flex-start);
+      flex-direction: column;
+
+      .input {
+        width: calc(100% - 2rem);
+        margin-bottom: 0.5rem;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.chatbox {
+    width: 100%;
+    @include flex(flex-start, flex-start);
+    flex-direction: column;
+    height: calc(100% - 53px);
+    position: relative;
+    padding-bottom: 53px;
+
+    // .chatbox-messages
+    &-messages {
+      width: 100%;
+      height: calc(100% - 1rem);
+      @include flex(flex-start, flex-start);
+      flex-direction: column;
+      @include applyScrollbar();
+      padding-bottom: 1rem;
+
+      .message {
+        width: auto;
+        max-width: calc(100% - 4rem);
+        padding: 0.5rem 1rem;
+        margin: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+        position: relative;
+        font-size: 1rem;
+        line-height: 1.5;
+
+        &:before {
+          content: '';
+          display: block;
+          width: 0; 
+          height: 0; 
+          border-left: 0.3rem solid transparent;
+          border-right: 0.3rem solid transparent;
+          border-top: 0.3rem solid $color-primary;
+          position: absolute;
+          top: 100%;
+        }
+
+        .sender {
+          position: absolute;
+          color: $gray;
+          top: calc(100% + 0.35rem);
+          font-size: 0.8rem;
+        }
+        .text {
+          text-align: left;
+        }
+
+        &.me {
+          @include flex(flex-end, flex-start);
+          border-bottom-right-radius: 0;
+          border: 1px solid $color-primary;
+          border-bottom: 4px solid $color-primary;
+          align-self: flex-end;
+          &:before {
+            top: calc(100% + 4px);
+            right: 0.25rem;
+          }
+          .sender {
+            right: 0;
+            padding-right: 0.25rem;
+          }
+        }
+
+        &.others {
+          @include flex(flex-start, flex-start);
+          background-color: $color-primary;
+          border-bottom-left-radius: 0;
+          color: $white;
+          &:before {
+            left: 0.25rem;
+          }
+          .sender {
+            left: 0;
+            padding-left: 0.25rem;
+          }
+        }
+      }
+    }
+
+    // .chatbox-input
+    &-input {
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+      background-color: $white;
+      border-top: 1px solid $lightgray;
+
+      .form {
+        padding: 0.5rem 1rem;
+        @include flex(flex-start, center);
+        width: calc(100% - 2rem);
+      }
+
+      .input {
+        flex-grow: 1;
+        background-color: rgba($lightgray, 0.5);
+      }
+
+      .btn {
+        padding: 0.5rem 1rem;
+        margin-left: 0.5rem;
+      }
+    }
+}
+
+.someone-typing {
+  position: fixed;
+  bottom: 53px;
+  left: 0;
+  font-size: 1rem;
+  display: block;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  background-color: $white;
+
+  animation: fadeIn 0.15s ease-out 1 both;
+}

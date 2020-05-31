@@ -1,0 +1,152 @@
+body {
+    font-family: $font-family;
+    font-size: $font-size;
+    @include flex(center, center);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: $color-bg;
+}
+
+.input {
+    @include flex(flex-start, center);
+    background-color: $white;
+    padding: 0.5rem 1rem;
+    color: $color-text;
+    border: 1px solid $lightgray;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}
+
+
+.spinner {
+    width: 1rem;
+    height: 1rem;
+    border: 4px solid $color-primary;
+    border-left: 4px solid transparent;
+    border-radius: 50%;
+
+    animation: spinner 1s linear infinite both;
+}
+
+.btn {
+    @include flex(flex-start, center);
+    padding: 1rem 1rem;
+    color: $color-text;
+    border: 1px solid $lightgray;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    transition: all 0.15s ease-out;
+
+    .text {
+        color: $color-text;
+        transition: all 0.15s ease-out;
+    }
+    .spinnter {
+        border: 4px solid $white;
+        border-left: 4px solid transparent;
+        transition: all 0.15s ease-out;
+    }
+    &:hover {
+        background-color: darken($lightgray, 10%);
+        border: 1px solid darken($lightgray, 10%);
+    }
+
+    &-primary {
+        background-color: $color-primary;
+        border: 1px solid $color-primary;
+        color: $white;
+        .text {
+            color: $white;
+        }
+        &:hover {
+            background-color: darken($color-primary, 10%);
+            border: 1px solid darken($color-primary, 10%);
+        }
+    }
+
+    &-secondary {
+        background-color: $color-secondary;
+        border: 1px solid $color-secondary;
+        color: $white;
+        .text {
+            color: $white;
+        }
+        &:hover {
+            background-color: darken($color-secondary, 10%);
+            border: 1px solid darken($color-secondary, 10%);
+        }
+    }
+
+    &-success {
+        background-color: $color-success;
+        border: 1px solid $color-success;
+        color: $white;
+        .text {
+            color: $white;
+        }
+        &:hover {
+            background-color: darken($color-success, 10%);
+            border: 1px solid darken($color-success, 10%);
+        }
+    }
+
+    &-warning {
+        background-color: $color-warning;
+        border: 1px solid $color-warning;
+        color: $white;
+        .text {
+            color: $white;
+        }
+        &:hover {
+            background-color: darken($color-warning, 10%);
+            border: 1px solid darken($color-warning, 10%);
+        }
+    }
+
+    &-danger {
+        background-color: $color-danger;
+        border: 1px solid $color-danger;
+        color: $white;
+        .text {
+            color: $white;
+        }
+        &:hover {
+            background-color: darken($color-danger, 10%);
+            border: 1px solid darken($color-danger, 10%);
+        }
+    }
+
+    &-info {
+        background-color: $color-info;
+        border: 1px solid $color-info;
+        color: $white;
+        .text {
+            color: $white;
+        }
+        &:hover {
+            background-color: darken($color-info, 10%);
+            border: 1px solid darken($color-info, 10%);
+        }
+    }
+
+    &.processing {
+        padding-left: 0.5rem !important;
+        &:before {
+            content: '';
+            display: block;
+            width: 0.75rem;
+            height: 0.75rem;
+            border: 2px solid rgba($white, 0.5);
+            border-left: 2px solid transparent;
+            border-radius: 50%;
+            padding: 0;
+            margin: 0;
+        
+            animation: spinner 1s linear infinite both;
+        }
+        .text {
+            margin-left: 0.5rem;
+        }
+    }
+}
