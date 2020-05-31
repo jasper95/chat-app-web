@@ -5,6 +5,8 @@ import useQuery from '../shared/hooks/useQuery'
 import SocketContext from '../context/SocketContext'
 import uniq from 'lodash/uniq'
 import qs from 'qs'
+import cn from 'classnames'
+
 
 type MessageListProps = {
 }
@@ -42,7 +44,7 @@ function MessageList(props: MessageListProps) {
         </div>
       )}
       {messages.map((message) => (
-        <div key={message.id} className={`message ${message.sender ===  user?.username ? 'me': 'others'}`}>
+        <div key={message.id} className={cn('message', { me: message.sender === user?.username, others: message.sender !== user?.username })}>
           <span className='text'>{message.text}</span>
           <span className='sender'>{message.sender}</span>
         </div>

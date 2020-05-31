@@ -1,4 +1,5 @@
 import React from 'react'
+import cn from 'classnames'
 import useForm from '../shared/hooks/useForm'
 import { getValidationResult } from '../shared/utils/tools'
 import { LoginSchema, loginSchema } from '../model/login'
@@ -28,7 +29,7 @@ function Login(props: LoginProps) {
             <form className='form' onSubmit={onSubmit}>
               <input className='input' placeholder='Username' name='username' value={fields.username} onChange={formHandlers.onElementChange}/>
               <input className='input' placeholder='Password' name='password' value={fields.password} type='password' onChange={formHandlers.onElementChange}/>
-              <button onClick={onSubmit} className={`btn btn-primary ${loginState.loading ? 'processing' : ''}`}>
+              <button onClick={onSubmit} className={cn('btn btn-primary', {processing: loginState.loading})}>
                 <span className='text'>Login/Signup</span>
               </button>
             </form>

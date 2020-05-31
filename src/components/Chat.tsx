@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import socketIOClient from "socket.io-client";
+import cn from 'classnames'
 import MessageList from './MessageList'
 import MessageBox from './MessageBox'
 import useMutation from '../shared/hooks/useMutation'
@@ -10,7 +11,7 @@ type ChatProps = {
   onLogout():void,
 }
 function Chat(props: ChatProps) {
-  const [,onMutate] = useMutation({ url: '/auth/logout'})
+  const [logoutState,onMutate] = useMutation({ url: '/auth/logout'})
   const [socket, setSocket] = useState<SocketIOClient.Socket | null>(null)
   const user = useContext(AuthContext)
   useEffect(() => {
@@ -26,7 +27,7 @@ function Chat(props: ChatProps) {
       <div className='header'>
         <div className="wrapper">
           Chat App
-          <button onClick={handleLogout} className='btn btn-danger logout'>
+          <button onClick={handleLogout} className={cn('btn btn-danger logout', { processing: logoutState.loading})}>
             <span className='text'>Logout</span>
           </button>
         </div>
